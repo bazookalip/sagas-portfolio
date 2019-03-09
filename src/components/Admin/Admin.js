@@ -16,7 +16,6 @@ class Admin extends Component {
 
   
     componentDidMount() {
-        // console.log('in component did mount');
         this.getProjects();
     }
 
@@ -40,6 +39,17 @@ class Admin extends Component {
         this.props.dispatch({ type: 'FETCH_PROJECTS' });
     }
 
+    adminList() {
+        return this.props.projects.map(project =>
+                 <tr key={project.id}>
+                <td> {project.name} </td>
+                 <td> {project.description} </td>
+                <td><button onClick={() => this.deleteButton(project.id)} className="deleteButton">Delete</button></td>
+
+            </tr>
+        )
+    }
+
 
     render() {
         return (
@@ -51,45 +61,27 @@ class Admin extends Component {
                     <h2>Add New Project</h2>
                     <input type="text" placeholder="Name" value={this.state.name} onChange={this.onChange('name')} />
                     <input type="date" value={this.state.date} onChange={this.onChange('date')} />
-
-                    <select value={this.state.name} onChange={this.onChange('tag')}>
-                        <option value="1">React</option>
-                        <option value="2">jQuery</option>
-                        <option value="3">Node</option>
-                        <option value="3">SQL</option>
-                        <option value="3">Redux</option>
-                        <option value="3">HTML</option>
-                    </select><br />
+                        <select value={this.state.name} onChange={this.onChange('tag')}>
+                            <option value="1">React</option>
+                            <option value="2">jQuery</option>
+                            <option value="3">Node</option>
+                            <option value="3">SQL</option>
+                            <option value="3">Redux</option>
+                            <option value="3">HTML</option>
+                        </select><br />
+              
                     <input type="text" placeholder="GitHub URL" value={this.state.git} onChange={this.onChange('git')} />
 
                     <input type="text" placeholder="Web URL" value={this.state.web} onChange={this.onChange('web')} />
 
-                    <textarea placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
+                    <input type= "text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
                     <button onClick={this.handleClick}>Submit</button>
                 </div>
 
 
                 <table>
                     <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <th>Action</th>
-
-                        </tr>
-                        <tr>
-                            <td>Server Side Calculator</td>
-                            <td><button>delete</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>Restaurants</td>
-                            <td><button>delete</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>Bookstore</td>
-                            <td><button>delete</button></td>
-                        </tr>
+                      {this.adminList()}
                     </tbody>
                 </table>
 
