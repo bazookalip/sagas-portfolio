@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT name", "date", "tag_id", "website", "github", "description", "thumbnail" FROM plant';
+    const queryText = 'SELECT * FROM projects';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {

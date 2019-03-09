@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // needed for angular requests
 app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/
-app.use('/api/project', projectRouter);
+app.use('/results', projectRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
