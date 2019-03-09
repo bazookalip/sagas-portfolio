@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Admin.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios'
+
 
 class Admin extends Component {
     state = {
@@ -17,7 +17,7 @@ class Admin extends Component {
   
     componentDidMount() {
         // console.log('in component did mount');
-        this.getResults();
+        this.getProjects();
     }
 
     onChange = (property) => (event) => {
@@ -34,20 +34,10 @@ class Admin extends Component {
 
     };
 
-    getResults = () => {
+    getProjects = () => {
         //make call to server using axios
-        axios({
-            method: 'GET',
-            url: '/results',
-        }).then((response) => {
-            //  console.log('data here', response.data);
-            this.setState({
-                results: response.data
-            });
-        }).catch((error) => {
-            console.log('could not get results');
-            console.log('could not get results', error);
-        })
+        console.log('going to get projects');
+        this.props.dispatch({ type: 'FETCH_PROJECTS' });
     }
 
 
