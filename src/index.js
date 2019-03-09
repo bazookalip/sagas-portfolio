@@ -15,6 +15,7 @@ import createSagaMiddleware from 'redux-saga';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_PROJECTS', fetchProjects)
+    yield takeEvery('ADD_PROJECT', addProject)
 }
 
 function* fetchProjects(action) {
@@ -27,6 +28,29 @@ function* fetchProjects(action) {
         console.log('error with fetching projects from the server', error);
     }
 }
+
+// function* addProject(action) {
+//     try {
+//         console.log('fetch action', action)
+//         yield axios.post('/portfolio', action.payload)
+
+//     }catch(error)
+// }
+
+function* addProject(action) {
+    try {
+        console.log('add action', action);
+        yield axios.post('/api/plant', action.payload);
+        yield dispatch({ type: 'FETCH_PROJECTS' });
+    } catch (error) {
+        console.log('error with');
+    };
+};
+
+
+
+
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();

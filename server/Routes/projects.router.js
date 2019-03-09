@@ -13,5 +13,42 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         })
 });
+
+
+
+
+router.delete('/:id', (req, res) => {
+    console.log('/ DELETE request was hit');
+    console.log('req.params', req.params);
+    pool.query(`DELETE FROM "projects" WHERE "id"=$1;`, [req.params.id])
+        .then(() => {
+            res.sendStatus(204);
+        }).catch(error => {
+            console.log('there was an error on the delete query', error);
+            res.sendStatus(500);
+        });
+});
+
+
+router.post('/', (req, res) => {
+    const newProject = req.body;
+    const queryText = `INSERT INTO projects ("name", "description", "website", "github", "date_completed", "tag_id")
+                    VALUES ($1, $2, $3, $4, $5, $6)`;
+    const queryValues = [
+        newProject.name,
+        newProject.description,
+        newProject.website,
+        newProject.github,
+        newProject.date_completed,
+        newProject.tag_id,
+       
+    ];
+    pool.query(queryText, queryValues)
+        .then(() => { res.sendStatus(201); })
+        .catch((err) => {
+            console.log('Error completing SELECT plant query', err);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;
 
