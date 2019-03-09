@@ -19,6 +19,7 @@ function* rootSaga() {
 
 function* fetchProjects(action) {
     try {
+        console.log('fetch action', action);
         const getProjectsResponse = yield axios.get('/portfolio');
         yield dispatch({ type: 'SET_PROJECTS', payload: getProjectsResponse.data });
     }
