@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 
@@ -25,4 +26,10 @@
 
 table {
   margin: 0 auto;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 45%;
 }

@@ -18,14 +18,13 @@ class Home extends Component {
 
 
     adminList() {
-            return this.props.projects.map(project =>
-            <ProjectItem project={project} />
-        );
-    }
+            return this.props.projects.map(project => <ProjectItem project={project} key={project.id}/>);
+    
+        }
 
     render() {
 
-
+ 
 
         return (
             <div>

@@ -1,9 +1,14 @@
 .Header {
-    height: 100px;
+    height: 250px;
     background-color: black;
-    color: azure
+    color: azure;
+    margin-bottom: 100px;
+    
 }
 
-h1 {
-   
+
+img {
+    text-align:center;
+    margin: 0 auto;
+    padding:0px;
 }

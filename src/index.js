@@ -30,13 +30,6 @@ function* fetchProjects(action) {
     }
 }
 
-// function* addProject(action) {
-//     try {
-//         console.log('fetch action', action)
-//         yield axios.post('/portfolio', action.payload)
-
-//     }catch(error)
-// }
 
 function* addProject(action) {
     try {
