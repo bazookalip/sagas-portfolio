@@ -16,6 +16,7 @@ import createSagaMiddleware from 'redux-saga';
 function* rootSaga() {
     yield takeEvery('FETCH_PROJECTS', fetchProjects)
     yield takeEvery('ADD_PROJECT', addProject)
+    yield takeEvery('DELETE_PROJECT', deleteProject)
 }
 
 function* fetchProjects(action) {
@@ -40,13 +41,23 @@ function* fetchProjects(action) {
 function* addProject(action) {
     try {
         console.log('add action', action);
-        yield axios.post('/api/plant', action.payload);
+        yield axios.post('/portfolio', action.payload);
         yield dispatch({ type: 'FETCH_PROJECTS' });
     } catch (error) {
         console.log('error with');
     };
 };
 
+
+function* deleteProject(action) {
+    try {
+        console.log('add action', action);
+        yield axios.delete(`/portfolio/${action.payload}`);
+        yield dispatch({ type: 'FETCH_PROJECTS' });
+    } catch (error) {
+        console.log('error with delete ');
+    };
+};
 
 
 

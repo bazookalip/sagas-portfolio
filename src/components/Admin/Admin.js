@@ -2,34 +2,30 @@ import React, { Component } from 'react';
 import './Admin.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import axios from 'axios'
+
 
 class Admin extends Component {
     state = {
         name: '',
-        date: '',
+        date_completed: '',
         tag: '',
         github: '',
         website: '',
         description: '',
+        thumbnail: '',
     };
 
 
     onSubmit = () => {
         console.log('going to get projects');
-        this.props.dispatch({ type: 'ADD_PROJECTS' });
+        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state });
        
 
 
     }
 
-    deleteButton = (resultsId) => {
-       axios({
-            method: 'DELETE',
-            url: '/portfolio/' + resultsId
-        }).then(() => {
-            this.getProjects();
-        })
+    deleteButton = (projectId) => {
+        this.props.dispatch({ type: 'DELETE_PROJECT', payload: projectId });
     }
 
   
@@ -78,8 +74,9 @@ class Admin extends Component {
                     <Link to="/">Home</Link>
                     <h2>Add New Project</h2>
                     <input type="text" placeholder="Name" value={this.state.name} onChange={this.onChange('name')} />
-                    <input type="date" value={this.state.date} onChange={this.onChange('date')} />
+                    <input type="date" value={this.state.date} onChange={this.onChange('date_completed')} />
                         <select value={this.state.tag} onChange={this.onChange('tag')}>
+                            <option value="0">Add Technology</option>
                             <option value="1">React</option>
                             <option value="2">jQuery</option>
                             <option value="3">Node</option>
@@ -88,21 +85,23 @@ class Admin extends Component {
                             <option value="3">HTML</option>
                         </select><br />
 
-                    {/* <div class="dropdown">
-                        <button class="dropbtn">Tag</button>
-                        <div class="dropdown-content">
-                            <option value="1">React</option>
-                            <option value="2">jQuery</option>
-                            <option value="3">Node</option>
-                            <option value="3">SQL</option>
-                            <option value="3">Redux</option>
-                            <option value="3">HTML</option>
-                        </div>
-                    </div> */}
+                   
               
-                    <input type="text" placeholder="GitHub URL" value={this.state.git} onChange={this.onChange('git')} />
+                    <input type="text" placeholder="GitHub URL" value={this.state.git} onChange={this.onChange('github')} />
 
-                    <input type="text" placeholder="Web URL" value={this.state.web} onChange={this.onChange('web')} />
+                    <input type="text" placeholder="Web URL" value={this.state.web} onChange={this.onChange('website')} />
+
+                    <select value={this.state.thumbnail} onChange={this.onChange('thumbnail')}>
+                        <option value=" " >Add Image</option>
+
+                        <option value="./images/bookstore.png">Book Store</option>
+                        <option value="./images/calculator.png">calculator</option>
+                        <option value="./images/feedback.png">feedback</option>
+                        <option value="./images/list.png">List</option>
+                        <option value="./images/restaurant.png">restaurant</option>
+
+                    </select><br />
+                    {/* <input type="text" placeholder="Thumbnail" value={this.state.thumbnail} onChange={this.onChange('thumbnail')} /> */}
 
                     <input type= "text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
                     <button onClick={this.onSubmit}>Submit</button>

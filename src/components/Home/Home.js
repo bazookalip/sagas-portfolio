@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header'
 import './Home.css'
+import ProjectItem from '../ProjectItem/ProjectItem'
 
 class Home extends Component {
 
@@ -17,45 +18,49 @@ class Home extends Component {
 
 
     adminList() {
-        return this.props.projects.map(project =>
-            <tr key={project.id}>
-                <td>{project.thumbnail}</td>
-                <td>{project.name}</td>
-                <td>{project.description}</td>
-                <td>{project.github}</td>
+       
+        return this.props.projects.map(project => 
+            // var thumbnail = null;
+            // var name = null;
+            // var description = null;
+            // var github = null;
 
-            </tr>
-        )
+            // if(project.thumbnail === ""){
+            //     thumbnail = null;
+            // }else {
+            //     thumbnail = project.thumbnail
+            // }
+
+            // if(project.name === "") {
+            //     name == null;
+            // }
+
+            //     <tr key={project.id}>
+            //     <td>{project.thumbnail !="" && <img src={project.thumbnail}/>}</td>
+            //     <td>{project.name !== "" && project.name} </td>
+            //     <td>{project.description !== "" && project.description}</td>
+            //     <td>{project.github !== "" && project.github}</td>
+                    <ProjectItem
+                    project = {project}
+                    
+                    />
+            // </tr>
+
+            ); 
     }
 
     render() {
       
-        // let thumbnail;
-         
-        // if (this.props.projects.thumbnail === 'public/images/restaurants.png') {
-        //     thumbnail = <img alt="Restaurant Project" src="images/restaurants.png" />
-        //  } else { thumbnail = null;
-
-        // } 
-       
+        
 
         return (
             <div>
                 <Header />
                 
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>image</th>
-                            <th>Project</th>
-                            <th>Description</th>
-                            <th>Github</th>
-                        </tr>
+               
                       
-                        {this.adminList()}
-                    </tbody>
-                </table>
-                {/* {thumbnail} */}
+                {this.adminList()}
+               
               
      
             </div>
