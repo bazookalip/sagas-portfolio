@@ -4,13 +4,12 @@ import React, { Component } from 'react';
 class ProjectItem extends Component {
     render() {
         return (
-            <div className= "box">
-                <div>
+            <div>
+                <div className="container">
                     {this.props.project.thumbnail != "" && <img src={this.props.project.thumbnail} />}
                 </div>
                 <div>
                     <div>
-                       {this.props.project.name !== "" && this.props.project.name}
                         {this.props.project.github !== "" && this.props.project.github}
                         {this.props.project.website !== "" && this.props.project.website}
                         {this.props.project.tag !== "" && this.props.project.tag}
@@ -24,7 +23,17 @@ class ProjectItem extends Component {
                         {this.props.project.description !== "" && this.props.project.description}
                     </div>
                 </div>
+
+           
+                <h1> {this.props.project.project_name !== "" && this.props.project.project_name}</h1>
+                
+
+               
+                   
+                    
             </div>
+
+            
         );
     }
 }

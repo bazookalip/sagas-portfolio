@@ -18,51 +18,19 @@ class Home extends Component {
 
 
     adminList() {
-       
-        return this.props.projects.map(project => 
-            // var thumbnail = null;
-            // var name = null;
-            // var description = null;
-            // var github = null;
-
-            // if(project.thumbnail === ""){
-            //     thumbnail = null;
-            // }else {
-            //     thumbnail = project.thumbnail
-            // }
-
-            // if(project.name === "") {
-            //     name == null;
-            // }
-
-            //     <tr key={project.id}>
-            //     <td>{project.thumbnail !="" && <img src={project.thumbnail}/>}</td>
-            //     <td>{project.name !== "" && project.name} </td>
-            //     <td>{project.description !== "" && project.description}</td>
-            //     <td>{project.github !== "" && project.github}</td>
-                    <ProjectItem
-                    project = {project}
-                    
-                    />
-            // </tr>
-
-            ); 
+            return this.props.projects.map(project =>
+            <ProjectItem project={project} />
+        );
     }
 
     render() {
-      
-        
+
+
 
         return (
             <div>
                 <Header />
-                
-               
-                      
                 {this.adminList()}
-               
-              
-     
             </div>
 
         );
