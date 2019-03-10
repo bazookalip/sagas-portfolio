@@ -29,7 +29,9 @@ class Home extends Component {
         return (
             <div>
                 <Header />
+                <div className="box">
                 {this.adminList()}
+                </div>
             </div>
 
         );

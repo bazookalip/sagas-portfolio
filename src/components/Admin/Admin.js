@@ -92,7 +92,7 @@ class Admin extends Component {
                         <option value="./images/calculator.png">Calculator</option>
                         <option value="./images/feedback.png">Feedback</option>
                         <option value="./images/list.png">To Do List</option>
-                        <option value="./images/restaurant.png">Restaurants</option>
+                        <option value="./images/restaurants.png">Restaurants</option>
                     </select><br />
 
                     <input type="text" placeholder="Description" value={this.state.description} onChange={this.onChange('description')} /><br />
