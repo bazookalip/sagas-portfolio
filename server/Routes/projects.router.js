@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT *, "tags"."name" AS "tag_name","projects"."name" AS "project_name" FROM "projects" JOIN "tags" ON "projects"."tag_id" = "tags"."id"';
+    const queryText = 'SELECT * FROM projects';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         })
 });
 
-
+// SELECT "tags"."name" AS "tag_name", "projects"."name" AS "project_name" FROM "projects" JOIN "tags" ON "projects"."tag_id" = "tags"."id"
 
 
 router.delete('/:id', (req, res) => {
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(201); })
         .catch((err) => {
-            console.log('Error completing SELECT plant query', err);
+            console.log('Error completing INSERT project query', err);
             res.sendStatus(500);
         });
 });

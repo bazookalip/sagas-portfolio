@@ -21,7 +21,7 @@ function* rootSaga() {
 
 function* fetchProjects(action) {
     try {
-        console.log('fetch action', action);
+        // console.log('fetch action', action);
         const getProjectsResponse = yield axios.get('/portfolio');
         yield dispatch({ type: 'SET_PROJECTS', payload: getProjectsResponse.data });
     }
@@ -33,7 +33,7 @@ function* fetchProjects(action) {
 
 function* addProject(action) {
     try {
-        console.log('add action', action);
+        // console.log('add action', action);
         yield axios.post('/portfolio', action.payload);
         yield dispatch({ type: 'FETCH_PROJECTS' });
     } catch (error) {
@@ -44,7 +44,7 @@ function* addProject(action) {
 
 function* deleteProject(action) {
     try {
-        console.log('add action', action);
+        // console.log('add action', action);
         yield axios.delete(`/portfolio/${action.payload}`);
         yield dispatch({ type: 'FETCH_PROJECTS' });
     } catch (error) {
