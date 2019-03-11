@@ -13,7 +13,7 @@ class ProjectItem extends Component {
 
                 <div>
                     <h1> {this.props.project.name !== "" && this.props.project.name}</h1>
-                    <Link to="/"> {this.props.project.github !== "" && this.props.project.github}</Link> 
+                    <a href={this.props.project.github !== "" && this.props.project.github} target="_blank">github</a>
                     <p> {this.props.project.website !== "" && this.props.project.website}</p>
                     <p>{this.props.project.tag_name !== "" && this.props.project.tag_name}</p>
                     Date completed:  {this.props.project.date_completed !== "" && this.props.project.date_completed}
@@ -22,7 +22,7 @@ class ProjectItem extends Component {
 
 
 
-               
+
 
 
 
