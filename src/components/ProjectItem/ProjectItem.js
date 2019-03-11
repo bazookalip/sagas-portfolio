@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 
 
 class ProjectItem extends Component {
@@ -13,7 +13,7 @@ class ProjectItem extends Component {
 
                 <div>
                     <h1> {this.props.project.name !== "" && this.props.project.name}</h1>
-                    <a href={this.props.project.github !== "" && this.props.project.github} target="_blank">Github</a><br/>
+                    <a href={this.props.project.github !== "" && this.props.project.github} target="_blank" rel="noopener noreferrer">Github</a><br/>
                     {/* <a href={this.props.project.website !== "" && this.props.project.website} target="_blank">Website</a> */}
                     <p>{this.props.project.tag_name !== "" && this.props.project.tag_name}</p>
                     Date completed:  {this.props.project.date_completed !== "" && this.props.project.date_completed}
