@@ -13,9 +13,9 @@ class ProjectItem extends Component {
                     <div>
                         <h1> {this.props.project.name !== "" && this.props.project.name}</h1>
                         <p>{this.props.project.github !== "" && this.props.project.github}</p>
-                        <p>   {this.props.project.website !== "" && this.props.project.website}</p>
+                        <p> {this.props.project.website !== "" && this.props.project.website}</p>
                         <p>{this.props.project.tag_name !== "" && this.props.project.tag_name}</p>
-                        {this.props.project.date_completed !== "" && this.props.project.date_completed}
+                      Date completed:  {this.props.project.date_completed !== "" && this.props.project.date_completed}
                     </div>
                     {this.props.project.description !== "" && this.props.project.description}
            
