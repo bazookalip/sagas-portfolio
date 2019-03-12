@@ -1,3 +1,9 @@
-My portfolio of projects built using React, Redux and Sagas.
+# React Redux with Sagas
 
-Run npm install 
+
+
+1. `npm install`
+1. `npm run server`
+1. `npm run client`
+
+
